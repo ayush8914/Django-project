@@ -15,9 +15,9 @@ def productlist(request):
 
 
 
-def productdetail(request,id):
-    print(id)
-    productdetail = Product.objects.get(id=id)    
+def productdetail(request,product_slug):
+    print(product_slug)
+    productdetail = Product.objects.get(slug=product_slug)    
     # print(productlist)
 
     
