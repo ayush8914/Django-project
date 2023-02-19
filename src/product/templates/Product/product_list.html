@@ -466,7 +466,7 @@
 							<ul class="list">
 								{% for product in product_list %}
 
-								<a href="single.html">
+								<a href={{product.slug}}>
 									<li>
 									<img src={{product.image.url}} title="" alt="" />
 									<section class="list-left">

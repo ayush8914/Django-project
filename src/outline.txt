@@ -1,0 +1,33 @@
+item :
+    -title
+    - date & time
+    - ad id
+    - city for the owner
+    - images
+    - price
+    - condition of item
+    - item type - catogory
+
+ad :
+    
+    - date & time
+    - ad id
+    - ad description
+owner :
+    - city
+    - phone number
+
+
+feedback 
+contact
+
+   
+function
+    - login - register
+    - forget password
+    - post ad
+    - filter
+    - search
+
+
+
