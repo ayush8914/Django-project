@@ -11,8 +11,8 @@
 			</ol>
 			<div class="product-desc">
 				<div class="col-md-7 product-view">
-					<h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h2>
-					<p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a>, <a href="#">city</a>| Added at 06:55 pm, Ad ID: 987654321</p>
+					<h2>{{product_details.name}}</h2>
+					<p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a>, <a href="#">city</a>| Added at {{product_details.created}}, Ad ID: 987654321</p>
 					<div class="flexslider">
 						<ul class="slides">
 							<li data-thumb="images/ss1.jpg">
@@ -41,10 +41,10 @@
 					</script>
 					<!-- //FlexSlider -->
 					<div class="product-details">
-						<h4>Brand : <a href="#">Company name</a></h4>
+						<h4>Brand : <a href="#">{{product_details.Brand}}</a></h4>
 						<h4>Views : <strong>150</strong></h4>
-						<p><strong>Display </strong>: 1.5 inch HD LCD Touch Screen</p>
-						<p><strong>Summary</strong> : It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+						{% comment %} <p><strong>Display </strong>: 1.5 inch HD LCD Touch Screen</p> {% endcomment %}
+						<p><strong>Summary</strong> {{product_details.description}}</p>
 					
 					</div>
 				</div>
@@ -52,17 +52,17 @@
 					<div class="item-price">
 						<div class="product-price">
 							<p class="p-price">Price</p>
-							<h3 class="rate">$ 259</h3>
+							<h3 class="rate">Rs.{{product_details.price}}</h3>
 							<div class="clearfix"></div>
 						</div>
 						<div class="condition">
 							<p class="p-price">Condition</p>
-							<h4>Good</h4>
+							<h4>{{product_details.condition}}</h4>
 							<div class="clearfix"></div>
 						</div>
 						<div class="itemtype">
 							<p class="p-price">Item Type</p>
-							<h4>Phones</h4>
+							<h4>{{product_details.category}}</h4>
 							<div class="clearfix"></div>
 						</div>
 					</div>

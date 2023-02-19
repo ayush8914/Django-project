@@ -466,7 +466,7 @@
 							<ul class="list">
 								{% for product in product_list %}
 
-								<a href={{product.slug}}>
+								<a href="{% url 'products:product_detail' product.slug %}">
 									<li>
 									<img src={{product.image.url}} title="" alt="" />
 									<section class="list-left">
@@ -475,7 +475,7 @@
 									<p class="catpath">Mobile Phones » {{product.Brand}}</p>
 									</section>
 									<section class="list-right">
-									<span class="date">Today, 17:55</span>
+									<span class="date">Date, {{product.created}}</span>
 									<span class="cityname">City name</span>
 									</section>
 									<div class="clearfix"></div>
