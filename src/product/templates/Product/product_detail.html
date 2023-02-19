@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block body%}
 	<!--single-page-->
 	<div class="single-page main-grid-border">
@@ -15,20 +16,17 @@
 					<p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a>, <a href="#">city</a>| Added at {{product_details.created}}, Ad ID: 987654321</p>
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="images/ss1.jpg">
-								<img src="images/ss1.jpg" />
+							{% for image in product_images %}
+							<li data-thumb="{{image.image.url}}">
+								<img src="{{image.image.url}}" />
 							</li>
-							<li data-thumb="images/ss2.jpg">
-								<img src="images/ss2.jpg" />
-							</li>
-							<li data-thumb="images/ss3.jpg">
-								<img src="images/ss3.jpg" />
-							</li>
+							{% endfor %}
 						</ul>
 					</div>
+					
 					<!-- FlexSlider -->
-					  <script defer src="js/jquery.flexslider.js"></script>
-					<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+					  <script defer src="{% static 'js/jquery.flexslider.js'%}"></script>
+					<link rel="stylesheet" href="{% static 'css/flexslider.css'%}" type="text/css" media="screen" />
 
 						<script>
 					// Can also be used with $(document).ready()
