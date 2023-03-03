@@ -1,16 +1,21 @@
 from django.shortcuts import render
-from .models import Product,ProductImages
+from .models import Product,ProductImages,Category
+from django.core.paginator import Paginator
 # Create your views here.
 
 def productlist(request):
     # to retrive all products from database
     productlist = Product.objects.all()    
     # print(productlist)
-
-    
+   
+    Categorylist = Category.objects.all()
     template = 'Product/product_list.html'  
-    context ={'product_list' : productlist} 
-    return render(request,template,context)
+    paginator = Paginator(productlist, 1) # Show 25 contacts per page.
+    # paginate_by = 1
+    page_number = request.GET.get('page')
+    productlist = paginator.get_page(page_number)
+    context ={'product_list' : productlist,'category_list': Categorylist} 
+    return render(request,template,context) 
 
 
 

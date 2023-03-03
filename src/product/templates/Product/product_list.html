@@ -416,16 +416,10 @@
 			<div class="all-categories">
 				<h3> Select your category and find the perfect ad</h3>
 				<ul class="all-cat-list">
-					<li><a href="mobiles.html">Mobiles <span class="num-of-ads">(5,78,076)</span></a></li>
-					<li><a href="electronics-appliances.html">Electronics & Appliances  <span class="num-of-ads">(3,66,495)</span></a></li>
-					<li><a href="real-estate.html">Real Estate  <span class="num-of-ads">(45,450)</span></a></li>
-					<li><a href="furnitures.html">Furniture    <span class="num-of-ads">(1,77,145)</span></a></li>
-					<li><a href="pets.html">Pets   <span class="num-of-ads">(1,81,250)</span></a></li>
-					<li><a href="books-sports-hobbies.html">Books, Sports & Hobbies    <span class="num-of-ads">(66,822)</span></a></li>
-					<li><a href="fashion.html">Fashion   <span class="num-of-ads">(29,156)</span></a></li>
-					<li><a href="kids.html">Kids   <span class="num-of-ads">(25,699)</span></a></li>
-					<li><a href="services.html">Services   <span class="num-of-ads">(2,15,895)</span></a></li>
-					<li><a href="cars.html">Cars   <span class="num-of-ads">(2,15,306)</span></a></li>
+					
+					{% for category in category_list %}
+					  <li><a href="mobiles.html">{{category}}</a></li>
+					{% endfor %}
 				</ul>
 			</div>
 			<ol class="breadcrumb" style="margin-bottom: 5px;">
@@ -487,22 +481,36 @@
 							</div>
 						</div>
 					
-							</div>
-						</div>
-							</div>
-						</div>
+							
+						<div class="pagination">
 						<ul class="pagination pagination-sm">
-							<li><a href="#">Prev</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">6</a></li>
-							<li><a href="#">7</a></li>
-							<li><a href="#">8</a></li>
-							<li><a href="#">Next</a></li>
+							{% comment %} <span class="step-links"> {% endcomment %}
+								{% if product_list.has_other_pages %}
+								{% if product_list.has_previous %}
+            					  <li><a href="?page={{ product_list.previous_page_number }}">&laquo;Prev</a></li>
+								{% else %}
+								<li class="disabled"></li>
+        						{% endif %}
+								
+						    {% comment %} <span class="current"> {% endcomment %}
+								
+								{% for page in product_list.paginator.page_range %}
+								{% if product_list.number == page %}
+								<li><a href="#">{{page}}</a></li>
+								{% else %}
+							     	<li><a href="?page={{page}}">{{page}}</a></li>
+								{% endif %}
+							{% comment %} </span>{% endcomment %}
+							    {% endfor %}
+                            
+                      {% if product_list.has_next %}
+					  <li><a href="?page={{ product_list.next_page_number }}">Next &raquo;</a></li>
+					  {% else %}
+						<li class="disabled"></li>
+	                  {% endif %}
+					  {% endif %}
 						</ul>
+					</div>
 					  </div>
 					</div>
 				</div>

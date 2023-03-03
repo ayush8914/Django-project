@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -25,6 +26,7 @@ class Product(models.Model):
        if not self.slug and self.name :
            self.slug = slugify(self.name)
        super(Product,self).save(*args,**kwargs)
+       
              
     def __str__(self):
         #to see product name in admin site
