@@ -416,9 +416,9 @@
 			<div class="all-categories">
 				<h3> Select your category and find the perfect ad</h3>
 				<ul class="all-cat-list">
-					
+
 					{% for category in category_list %}
-					  <li><a href="mobiles.html">{{category}}</a></li>
+					  <li><a href="mobiles.html">{{category}}<span class="num-of-ads">({{category.total_products}})</a></li>
 					{% endfor %}
 				</ul>
 			</div>
