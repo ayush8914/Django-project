@@ -6,9 +6,9 @@
 		<div class="container">
 			<ol class="breadcrumb" style="margin-bottom: 5px;">
 				<li><a href="index.html">Home</a></li>
-				<li><a href="all-classifieds.html">All Ads</a></li>
-				<li class="active"><a href="mobiles.html">Mobiles</a></li>
-				<li class="active">Mobile Phone</li>
+				<li><a href="{% url 'products:product_list' %}">All Ads</a></li>
+				{% comment %} <li class="active"><a href="mobiles.html">Mobiles</a></li> {% endcomment %}
+				{% comment %} <li class="active">Mobile Phone</li> {% endcomment %}
 			</ol>
 			<div class="product-desc">
 				<div class="col-md-7 product-view">

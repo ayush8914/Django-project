@@ -2,20 +2,39 @@ from django.shortcuts import render
 from .models import Product,ProductImages,Category
 from django.core.paginator import Paginator
 from django.db.models import Count
+from django.db.models import Q
+
 # Create your views here.
 
-def productlist(request):
+def productlist(request , category_slug=None):
+    category=None
     # to retrive all products from database
     productlist = Product.objects.all()    
     # print(productlist)
    
     Categorylist = Category.objects.annotate(total_products=Count('product'))
+    
+    if category_slug :
+        category = Category.objects.get(slug=category_slug)
+        productlist = productlist.filter(category=category)
+        
+    search_query = request.GET.get('q')
+    if search_query:
+      productlist = productlist.filter(
+          Q(name__icontains = search_query) |
+          Q(description__icontains = search_query) |
+          Q(condition__icontains = search_query) |
+          Q(Brand__brand_name__icontains = search_query) |
+          Q(category__category_name__icontains =search_query)
+      )
+    
+    
     template = 'Product/product_list.html'  
     paginator = Paginator(productlist, 1) # Show 25 contacts per page.
     # paginate_by = 1
     page_number = request.GET.get('page')
     productlist = paginator.get_page(page_number)
-    context ={'product_list' : productlist,'category_list': Categorylist} 
+    context ={'product_list' : productlist,'category_list': Categorylist,'category':category} 
     return render(request,template,context) 
 
 
