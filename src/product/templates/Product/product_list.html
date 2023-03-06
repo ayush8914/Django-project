@@ -44,7 +44,7 @@
 				<ul class="all-cat-list">
 
 					{% for category in category_list %}
-					  <li><a href="{% url 'products:product_list_category' category.slug %}">{{category}}<span class="num-of-ads">({{category.total_products}})</a></li>
+					  <li><a href="{% url 'products:product_list_category' category.slug %}">{{category}}<span >({{category.total_products}})</a></li>
 					{% endfor %}
 				</ul>
 			</div>

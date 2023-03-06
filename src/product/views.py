@@ -3,7 +3,7 @@ from .models import Product,ProductImages,Category
 from django.core.paginator import Paginator
 from django.db.models import Count
 from django.db.models import Q
-
+from .forms import UserForm
 # Create your views here.
 
 def productlist(request , category_slug=None):
@@ -30,7 +30,7 @@ def productlist(request , category_slug=None):
     
     
     template = 'Product/product_list.html'  
-    paginator = Paginator(productlist, 1) # Show 25 contacts per page.
+    paginator = Paginator(productlist, 2) # Show 25 contacts per page.
     # paginate_by = 1
     page_number = request.GET.get('page')
     productlist = paginator.get_page(page_number)
@@ -51,3 +51,19 @@ def productdetail(request,product_slug):
     template = 'Product/product_detail.html'  
     context ={'product_details' : productdetail,'product_images' : productimages} 
     return render(request,template,context) 
+
+def postanad(request):
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        if user_form.is_valid():
+            user_form.save()
+            return redirect('/products')
+
+    else:
+        user_form = UserForm()
+
+    context = {'user_form' : user_form}
+
+   
+    template = 'Product/post-ad.html'  
+    return render(request,template,context)
