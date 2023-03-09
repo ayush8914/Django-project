@@ -1,8 +1,18 @@
+# import form class from django
 from django import forms
-from django.contrib.auth.models import User
 
+# import GeeksModel from models.py
+from .models import Product,ProductImages
 
-class UserForm(forms.ModelForm):
-    class Meta():
-        model = User
-        fields = ['first_name' , 'last_name' ,'username' , 'email' , 'password' ]
+# create a ModelForm
+class ProductForm(forms.ModelForm):
+	# specify the name of model to use
+	class Meta:
+		model = Product
+		fields = "__all__"
+
+class ProductImagesForm(forms.ModelForm):
+	# specify the name of model to use
+	class Meta:
+		model = ProductImages
+		fields = "__all__"

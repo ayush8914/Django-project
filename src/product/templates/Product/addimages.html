@@ -47,14 +47,15 @@
 
 						</form> {% endcomment %}
                            
-                        <form method="post" class="form">
+                        <form method="post" class="form" action="/products/">
                             {% csrf_token %}
                             {{form}}
                             {% buttons %}
                             <input type="submit"  value="post">
                             {% endbuttons %}
                         </form>
-						
+						 
+
 						 
 						</div>
 					<div class="clearfix"></div>

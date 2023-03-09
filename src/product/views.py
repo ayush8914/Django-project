@@ -3,7 +3,8 @@ from .models import Product,ProductImages,Category
 from django.core.paginator import Paginator
 from django.db.models import Count
 from django.db.models import Q
-from .forms import UserForm
+from .forms import ProductForm,ProductImagesForm
+
 # Create your views here.
 
 def productlist(request , category_slug=None):
@@ -52,18 +53,32 @@ def productdetail(request,product_slug):
     context ={'product_details' : productdetail,'product_images' : productimages} 
     return render(request,template,context) 
 
+
 def postanad(request):
-    if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
-        if user_form.is_valid():
-            user_form.save()
-            return redirect('/products')
+	context ={}
 
-    else:
-        user_form = UserForm()
-
-    context = {'user_form' : user_form}
-
+	# create object of form
+	form = ProductForm(request.POST or None, request.FILES or None)
+	template = 'Product/post-ad.html'
+	# check if form data is valid
+	if form.is_valid():
+		# save the form data to model
+		form.save()
    
-    template = 'Product/post-ad.html'  
-    return render(request,template,context)
+	context['form']= form
+	return render(request, template, context)
+
+
+def addimages(request):
+	context ={}
+
+	# create object of form
+	form = ProductImagesForm(request.POST or None, request.FILES or None)
+	template = 'Product/addimages.html'
+	# check if form data is valid
+	if form.is_valid():
+		# save the form data to model
+		form.save()
+   
+	context['form']= form
+	return render(request, template, context)
