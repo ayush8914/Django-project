@@ -4,52 +4,11 @@
 	<!-- Submit Ad -->
 	<div class="submit-ad main-grid-border">
 		<div class="container">
-			<h2 class="head">Post an Ad</h2>
-			{% comment %} <div class="post-ad-form"> {% endcomment %}
-				{% comment %} <form>
-					<label>Select Category <span>*</span></label>
-					<select class="">
-					  <option>Select Category</option>
-					  <option>Mobiles</option>
-					  <option>Electronics and Appliances</option>
-					  <option>Cars</option>
-					  <option>Bikes</option>
-					  <option>Furniture</option>
-					  <option>Pets</option>
-					  <option>Books, Sports and hobbies</option>
-					  <option>Fashion</option>
-					  <option>Kids</option>
-					  <option>Services</option>
-					  <option>Real, Estate</option>
-					</select>
-					<div class="clearfix"></div>
-					<label>Ad Title <span>*</span></label>
-					<input type="text" class="phone" placeholder="">
-					<div class="clearfix"></div>
-					<label>Ad Description <span>*</span></label>
-					<textarea class="mess" placeholder="Write few lines about your product"></textarea>
-					<div class="clearfix"></div>
-				<div class="upload-ad-photos">
-				<label>Photos for your ad :</label>	
-					<div class="photos-upload-view">
-						<form id="upload" action="index.html" method="POST" enctype="multipart/form-data">
-
-						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
-
-						<div>
-							<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
-							<div id="filedrag">or drop files here</div>
-						</div>
-
-						<div id="submitbutton">
-							<button type="submit">Upload Files</button>
-						</div>
-
-						</form> {% endcomment %}
-                           
+			<h2 class="head">Add images for your ad</h2>                           
                         <form method="post" class="form">
                             {% csrf_token %}
-                            {{form}}
+							{% bootstrap_form form %}
+
                             {% buttons %}
                             <input type="submit"  value="post">
                             {% endbuttons %}
@@ -57,6 +16,7 @@
 						 
 						<form method="post" class="form" action="/products/">
                             {% csrf_token %}
+							
                             {% buttons %}
                             <input type="submit"  value="home">
                             {% endbuttons %}
