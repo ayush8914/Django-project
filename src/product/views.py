@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Product,ProductImages,Category
 from django.core.paginator import Paginator
 from django.db.models import Count
+from django.template import RequestContext
 from django.db.models import Q
 from .forms import ProductForm,ProductImagesForm
 
@@ -55,18 +56,14 @@ def productdetail(request,product_slug):
 
 
 def postanad(request):
-	context ={}
-
-	# create object of form
-	form = ProductForm(request.POST or None, request.FILES or None)
-	template = 'Product/post-ad.html'
-	# check if form data is valid
-	if form.is_valid():
-		# save the form data to model
-		form.save()
-   
-	context['form']= form
-	return render(request, template, context)
+    context ={}
+    form = ProductForm(request.POST or None, request.FILES or None)
+    template = 'Product/post-ad.html'
+    if form.is_valid():
+        form.save()
+        return render(request,'Product/addimages.html')
+    context['form']= form
+    return render(request, template, context)
 
 
 def addimages(request):

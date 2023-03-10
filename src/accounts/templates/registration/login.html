@@ -16,7 +16,7 @@
 								<p><a href="#">Click Here</a> </p>
 								<div class="clearfix"> </div>
 							</div>
-							<form  method="post" class="form">
+						<form  method="post" class="form">
 								{% csrf_token %}
 								{% bootstrap_form form %}
 								{% buttons %}
@@ -24,7 +24,7 @@
 	
 								{% endbuttons %}
 							</form>
-
+                           {% comment %} {{form}} {% endcomment %}
 						
 						</div>
 						<div class="new_people">
