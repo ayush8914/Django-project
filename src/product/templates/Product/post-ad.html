@@ -5,13 +5,13 @@
 	<div class="submit-ad main-grid-border">
 		<div class="container">
 			<h2 class="head">Post an Ad</h2>
-                    <form method="post" class="form"> 
+                    <form method="post" class="form"  enctype="multipart/form-data"> 
                             {% csrf_token %}
 							{% bootstrap_form form %}
                             {% buttons %}
                             <input type="submit"  value="post">
                             {% endbuttons %}
-                        </form> 
+                   </form> 
 					{% comment %} <form method="post" class="form" action="addimages/">
 						{% csrf_token %}
 						

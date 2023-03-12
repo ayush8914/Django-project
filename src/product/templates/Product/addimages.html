@@ -4,24 +4,21 @@
 	<!-- Submit Ad -->
 	<div class="submit-ad main-grid-border">
 		<div class="container">
-			<h2 class="head">Add images for your ad</h2>                           
-                        <form method="post" class="form">
-                            {% csrf_token %}
-							{% bootstrap_form form %}
-
-                            {% buttons %}
-                            <input type="submit"  value="post">
-                            {% endbuttons %}
-                        </form>
-						 
-						<form method="post" class="form" action="/products/">
-                            {% csrf_token %}
-							
-                            {% buttons %}
-                            <input type="submit"  value="home">
-                            {% endbuttons %}
-                        </form>
-						 
+			<h2 class="head">Add images for your ad</h2>
+			<form method="post" action="/products/" >
+				{% csrf_token %}
+				{% buttons %}
+				<input type="submit"  value="home">
+				{% endbuttons %}	
+			</form>                           
+			<form method="post" class="form" enctype="multipart/form-data"> 
+				{% csrf_token %}
+			    {% bootstrap_form form %} 
+				{% comment %} {{form}} {% endcomment %}
+				{% buttons %}
+				<input type="submit" value="post">
+				{% endbuttons %}
+			</form> 
 						</div>
 					<div class="clearfix"></div>
 						<script src="js/filedrag.js"></script>

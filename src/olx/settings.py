@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'product',
-   
+    'crispy_forms',
+    # 'accounts',
 ]
 
 MIDDLEWARE = [
@@ -132,8 +133,15 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT =  os.path.join(BASE_DIR, "media",)
 
 LOGIN_REDIRECT_URL="/products"
-
+LOGOUT_REDIRECT_URL = "/accounts"
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR,"sent_emails")
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = os.environ.get('User_Email')
+# EMAIL_HOST_PASSWORD = os.environ.get('User_Password')

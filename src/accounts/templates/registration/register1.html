@@ -1,27 +1,30 @@
 {% extends 'base2.html' %}
 {% load bootstrap4 %}
 {% block body %}
-{% load crispy_forms_tags %}  
+  
+
 	 <section>
 			<div id="page-wrapper" class="sign-in-wrapper">
 				<div class="graphs">
 					<div class="sign-in-form">
 						<div class="sign-in-form-top">
-							<h1>Reset Password Confirm</h1>
+							<h1>Register</h1>
 						</div>
 						<div class="signin">
-							<form  method="post" class="form">
-								{% csrf_token %}
-							   {% comment %} {% bootstrap_form form %} {% endcomment %}
-							   {{form|crispy }}  
-								{% buttons %}
-									<input type="submit" class="btn btn-primary" value="Reset password">
-	
-								{% endbuttons %}
-							</form>
-						</form>	 
+                        <form method="post" class="form">
+                            {% csrf_token %}
+                            {% bootstrap_form user_form %}
+                            {% buttons %}
+                                <input type="submit" class="btn btn-primary" value="Register">
+                            {% endbuttons %}
+                        </form>
+
 						</div>
-						
+						<div class="new_people">
+							<h2>You Have An Account</h2>
+							<p></p>
+							<a href="/login">Login Now!</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -31,4 +34,5 @@
 			</footer>
         <!--footer section end-->
 	</section>
-{% endblock body %}
+
+    {% endblock body %}

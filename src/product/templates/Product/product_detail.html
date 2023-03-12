@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% load static %}
 {% block body%}
 	<!--single-page-->
@@ -65,8 +66,14 @@
 						</div>
 					</div>
 					<div class="interested text-center">
-						<h4>Interested in this Ad?<small> Contact the Seller!</small></h4>
-						<p><i class="glyphicon glyphicon-earphone"></i>00-85-9875462655</p>
+						<h4>Interested in this Ad?<h4>
+						<h5> want to buy</h5>
+						<form method="post" class="form"> 
+                            {% csrf_token %}
+                            {% buttons %}
+                            <input type="submit"  value="buy">
+                            {% endbuttons %}
+                        </form> 
 					</div>
 						<div class="tips">
 						<h4>Safety Tips for Buyers</h4>
